@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo List App</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="theme-switcher">
+            <button onclick="switchTheme('minimal')">Minimal</button>
+            <button onclick="switchTheme('neon')">Neon</button>
+            <button onclick="switchTheme('nature')">Nature</button>
+            <button onclick="switchTheme('dark')">Dark Mode</button>
+            <button onclick="switchTheme('retro')">Retro</button>
+        </div>
+        
+        <div class="todo-app">
+            <h1>My Todo List</h1>
+            
+            <div class="input-section">
+                <input type="text" id="todoInput" placeholder="Enter a new task..." />
+                <input type="date" id="dueDateInput" />
+                <button onclick="addTodo()">Add Task</button>
+            </div>
+            
+            <ul id="todoList"></ul>
+            
+            <div class="footer">
+                <span id="itemCount">0 items left</span>
+                <button onclick="clearCompleted()">Clear Completed</button>
+            </div>
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>

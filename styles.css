@@ -1,0 +1,587 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.container {
+    width: 100%;
+    max-width: 600px;
+    padding: 20px;
+}
+
+.theme-switcher {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 30px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.theme-switcher button {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: all 0.3s ease;
+}
+
+.todo-app {
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+@media (max-width: 480px) {
+    .todo-app {
+        padding: 20px;
+    }
+    
+    h1 {
+        font-size: 2em;
+    }
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 2.5em;
+}
+
+.input-section {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+
+#todoInput {
+    flex: 1 1 200px;
+    min-width: 0;
+    padding: 12px;
+    border: 2px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: all 0.3s ease;
+}
+
+#dueDateInput {
+    flex: 0 1 150px;
+    padding: 12px;
+    border: 2px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: all 0.3s ease;
+}
+
+.input-section button {
+    flex: 0 1 auto;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+}
+
+@media (max-width: 480px) {
+    .input-section {
+        flex-direction: column;
+    }
+    
+    #todoInput,
+    #dueDateInput,
+    .input-section button {
+        width: 100%;
+        flex: 1 1 100%;
+    }
+}
+
+#todoList {
+    list-style: none;
+    margin-bottom: 20px;
+}
+
+#todoList li {
+    display: flex;
+    align-items: center;
+    padding: 15px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+
+#todoList li input[type="checkbox"] {
+    margin-right: 15px;
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+}
+
+#todoList li span {
+    flex: 1;
+    font-size: 16px;
+    transition: all 0.3s ease;
+}
+
+#todoList li.completed span {
+    text-decoration: line-through;
+    opacity: 0.6;
+}
+
+.due-date {
+    font-size: 14px;
+    padding: 4px 8px;
+    border-radius: 4px;
+    margin-right: 10px;
+    background: rgba(0, 0, 0, 0.1);
+}
+
+.due-date.overdue {
+    background: #ff4444;
+    color: white;
+    font-weight: 600;
+}
+
+.delete-btn {
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    opacity: 0.6;
+    transition: all 0.3s ease;
+}
+
+.delete-btn:hover {
+    opacity: 1;
+}
+
+.footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 20px;
+    border-top: 1px solid #ddd;
+}
+
+.footer button {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: all 0.3s ease;
+}
+
+/* Theme: Minimal */
+body.theme-minimal {
+    background-color: #f5f5f5;
+    color: #333;
+}
+
+.theme-minimal .theme-switcher button {
+    background: white;
+    color: #333;
+}
+
+.theme-minimal .theme-switcher button.active {
+    background: #333;
+    color: white;
+}
+
+.theme-minimal .todo-app {
+    background: white;
+}
+
+.theme-minimal .input-section button {
+    background: #333;
+    color: white;
+}
+
+.theme-minimal .input-section button:hover {
+    background: #555;
+}
+
+.theme-minimal #todoList li {
+    background: #f9f9f9;
+}
+
+.theme-minimal .footer button {
+    background: #e0e0e0;
+    color: #333;
+}
+
+.theme-minimal .footer button:hover {
+    background: #d0d0d0;
+}
+
+.theme-minimal #dueDateInput {
+    border-color: #ddd;
+}
+
+.theme-minimal .due-date {
+    background: #e8e8e8;
+    color: #666;
+}
+
+/* Theme: Neon */
+body.theme-neon {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+}
+
+.theme-neon .theme-switcher button {
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.theme-neon .theme-switcher button.active {
+    background: #00ff88;
+    color: #333;
+    border: none;
+    box-shadow: 0 0 20px #00ff88;
+}
+
+.theme-neon .todo-app {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.theme-neon h1 {
+    text-shadow: 0 0 20px #00ff88;
+}
+
+.theme-neon #todoInput {
+    background: rgba(255, 255, 255, 0.1);
+    border: 2px solid #00ff88;
+    color: white;
+}
+
+.theme-neon #todoInput::placeholder {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.theme-neon .input-section button {
+    background: #00ff88;
+    color: #333;
+    box-shadow: 0 0 20px #00ff88;
+}
+
+.theme-neon .input-section button:hover {
+    box-shadow: 0 0 30px #00ff88;
+}
+
+.theme-neon #todoList li {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.theme-neon .delete-btn {
+    color: #ff006e;
+}
+
+.theme-neon .footer {
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.theme-neon .footer button {
+    background: rgba(255, 0, 110, 0.8);
+    color: white;
+}
+
+.theme-neon #dueDateInput {
+    background: rgba(255, 255, 255, 0.1);
+    border: 2px solid #00ff88;
+    color: white;
+}
+
+.theme-neon #dueDateInput::-webkit-calendar-picker-indicator {
+    filter: invert(1);
+}
+
+.theme-neon .due-date {
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.theme-neon .due-date.overdue {
+    background: #ff006e;
+    border-color: #ff006e;
+    box-shadow: 0 0 10px #ff006e;
+}
+
+/* Theme: Nature */
+body.theme-nature {
+    background: linear-gradient(135deg, #43cea2 0%, #185a9d 100%);
+    color: #2c5f2d;
+}
+
+.theme-nature .theme-switcher button {
+    background: #e8f5e9;
+    color: #2c5f2d;
+}
+
+.theme-nature .theme-switcher button.active {
+    background: #4caf50;
+    color: white;
+}
+
+.theme-nature .todo-app {
+    background: rgba(255, 255, 255, 0.95);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.theme-nature h1 {
+    color: #2c5f2d;
+}
+
+.theme-nature #todoInput {
+    border: 2px solid #81c784;
+}
+
+.theme-nature .input-section button {
+    background: #4caf50;
+    color: white;
+}
+
+.theme-nature .input-section button:hover {
+    background: #45a049;
+}
+
+.theme-nature #todoList li {
+    background: #e8f5e9;
+}
+
+.theme-nature .delete-btn {
+    color: #d32f2f;
+}
+
+.theme-nature .footer {
+    border-top: 1px solid #c8e6c9;
+}
+
+.theme-nature .footer button {
+    background: #81c784;
+    color: white;
+}
+
+.theme-nature #dueDateInput {
+    border-color: #81c784;
+}
+
+.theme-nature .due-date {
+    background: #c8e6c9;
+    color: #2c5f2d;
+}
+
+.theme-nature .due-date.overdue {
+    background: #ef5350;
+    color: white;
+}
+
+/* Theme: Dark Mode */
+body.theme-dark {
+    background: #121212;
+    color: #e0e0e0;
+}
+
+.theme-dark .theme-switcher button {
+    background: #1e1e1e;
+    color: #e0e0e0;
+    border: 1px solid #333;
+}
+
+.theme-dark .theme-switcher button.active {
+    background: #bb86fc;
+    color: #121212;
+    border: none;
+}
+
+.theme-dark .todo-app {
+    background: #1e1e1e;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.theme-dark h1 {
+    color: #bb86fc;
+}
+
+.theme-dark #todoInput {
+    background: #2c2c2c;
+    border: 2px solid #333;
+    color: #e0e0e0;
+}
+
+.theme-dark #todoInput::placeholder {
+    color: #666;
+}
+
+.theme-dark .input-section button {
+    background: #bb86fc;
+    color: #121212;
+}
+
+.theme-dark .input-section button:hover {
+    background: #a370e0;
+}
+
+.theme-dark #todoList li {
+    background: #2c2c2c;
+}
+
+.theme-dark .delete-btn {
+    color: #cf6679;
+}
+
+.theme-dark .footer {
+    border-top: 1px solid #333;
+}
+
+.theme-dark .footer button {
+    background: #333;
+    color: #e0e0e0;
+}
+
+.theme-dark .footer button:hover {
+    background: #404040;
+}
+
+.theme-dark #dueDateInput {
+    background: #2c2c2c;
+    border: 2px solid #333;
+    color: #e0e0e0;
+}
+
+.theme-dark #dueDateInput::-webkit-calendar-picker-indicator {
+    filter: invert(0.8);
+}
+
+.theme-dark .due-date {
+    background: #333;
+    color: #e0e0e0;
+}
+
+.theme-dark .due-date.overdue {
+    background: #cf6679;
+    color: #121212;
+}
+
+/* Theme: Retro */
+body.theme-retro {
+    background: #ffd54f;
+    color: #333;
+    font-family: 'Courier New', monospace;
+}
+
+.theme-retro .theme-switcher button {
+    background: #ff6b6b;
+    color: white;
+    font-family: 'Courier New', monospace;
+    border: 3px solid #333;
+    box-shadow: 3px 3px 0 #333;
+}
+
+.theme-retro .theme-switcher button.active {
+    background: #4ecdc4;
+    transform: translate(3px, 3px);
+    box-shadow: none;
+}
+
+.theme-retro .todo-app {
+    background: #ffe66d;
+    border: 5px solid #333;
+    box-shadow: 8px 8px 0 #333;
+}
+
+.theme-retro h1 {
+    color: #333;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+}
+
+.theme-retro #todoInput {
+    border: 3px solid #333;
+    background: white;
+    font-family: 'Courier New', monospace;
+}
+
+.theme-retro .input-section button {
+    background: #4ecdc4;
+    color: #333;
+    border: 3px solid #333;
+    box-shadow: 3px 3px 0 #333;
+    font-family: 'Courier New', monospace;
+    text-transform: uppercase;
+}
+
+.theme-retro .input-section button:hover {
+    transform: translate(3px, 3px);
+    box-shadow: none;
+}
+
+.theme-retro #todoList li {
+    background: #ff6b6b;
+    border: 3px solid #333;
+    color: white;
+}
+
+.theme-retro #todoList li.completed {
+    background: #95e1d3;
+}
+
+.theme-retro .delete-btn {
+    color: #333;
+    font-weight: bold;
+}
+
+.theme-retro .footer {
+    border-top: 3px solid #333;
+}
+
+.theme-retro .footer button {
+    background: #a8e6cf;
+    color: #333;
+    border: 3px solid #333;
+    box-shadow: 3px 3px 0 #333;
+    font-family: 'Courier New', monospace;
+}
+
+.theme-retro .footer button:hover {
+    transform: translate(3px, 3px);
+    box-shadow: none;
+}
+
+.theme-retro #dueDateInput {
+    border: 3px solid #333;
+    background: white;
+    font-family: 'Courier New', monospace;
+}
+
+.theme-retro .due-date {
+    background: #ffd54f;
+    color: #333;
+    border: 2px solid #333;
+    font-family: 'Courier New', monospace;
+    font-weight: bold;
+}
+
+.theme-retro .due-date.overdue {
+    background: #333;
+    color: #ff6b6b;
+}
